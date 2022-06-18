@@ -75,10 +75,8 @@ describe('::register.mjs', () => {
 
             expect(list.insertElement(5, 6)).toBe(true);
             expect(list.getElementsLength()).toBe(6);
-            expect(list[0]).toBe(expectedElement[0]);
-            expect(list[1]).toBe(expectedElement[1]);
-            expect(list[2]).toBe(expectedElement[2]);
-            expect(list[3]).toBe(expectedElement[3]);
+            for(let j = 0; j < list.getElementsLength; j++) 
+                expect(list.items[j]).toBe(expectedElement[j]);
         });
     });
 
