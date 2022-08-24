@@ -27,6 +27,24 @@ module.exports = class List {
 
     getElementsLength = () => this.items.length;
 
+    sentinelSearch = (element) => {
+        let i = 0;
+
+        const tempList = this.items;
+
+        tempList[tempList.length] = element;
+
+        while (element != this.items[i]) {
+            i++;
+        }
+
+        if (i == tempList.length) {
+            return -1;
+        } else {
+            return i;
+        }
+    }
+
     sequencialSearch = (element) => {
         let i = 0;
 
@@ -39,15 +57,15 @@ module.exports = class List {
     }
 
     removeItem = (position) => {
-        if (position == -1 
+        if (position == -1
             || position >= MAX
             || this.items.length == 0
             || position >= this.items.length - 1) return false;
 
         let i = position;
-        
-        while(i < this.items.length) {
-            this.items[i] = this.items[i + 1]; 
+
+        while (i < this.items.length) {
+            this.items[i] = this.items[i + 1];
             i++;
         }
 

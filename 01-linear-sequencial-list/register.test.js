@@ -75,12 +75,31 @@ describe('::register.mjs', () => {
 
             expect(list.insertElement(5, 6)).toBe(true);
             expect(list.getElementsLength()).toBe(6);
-            for(let j = 0; j < list.getElementsLength; j++) 
+            for (let j = 0; j < list.getElementsLength; j++)
                 expect(list.items[j]).toBe(expectedElement[j]);
         });
     });
 
     describe(':sequencial search', () => {
+        let list;
+
+        beforeEach(() => list = new List());
+
+        it('when item found should return the correct item position', () => {
+            for (let i = 0; i < 50; i++) list.insertElement(i, i + 1);
+
+            expect(list.sequencialSearch(5)).toBe(4);
+        });
+
+        it('when item not found should return the -1 position', () => {
+            for (let i = 0; i < 50; i++) list.insertElement(i, i + 1);
+
+            expect(list.sequencialSearch(51)).toBe(-1);
+        });
+    });
+
+
+    describe(':sentinel search', () => {
         let list;
 
         beforeEach(() => list = new List());
@@ -136,7 +155,7 @@ describe('::register.mjs', () => {
             expectedElement[7] = list.getElementsLength[8];
             expectedElement[8] = list.getElementsLength[9];
 
-            for(let j = 0; j < list.getElementsLength; j++) 
+            for (let j = 0; j < list.getElementsLength; j++)
                 expect(list.items[j]).toBe(expectedElement[j]);
         });
     });
